@@ -5,7 +5,7 @@ import { Loader } from 'lucide-react';
 import { Suspense } from 'react';
 
 export default function Home() {
-  const allPokemon: Promise<PokemonList> = getAllPokemon();
+  const allPokemon = getAllPokemon();
 
   return (
     <div className='flex justify-center px-6 md:px-20 grow'>
