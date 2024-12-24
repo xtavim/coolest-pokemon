@@ -7,7 +7,7 @@ export const Footer = () => {
       <Link
         href='https://github.com/xtavim/'
         target='_blank'
-        className='hover:scale-110 duration-150'
+        className='hover:scale-125 duration-150'
       >
         <GithubIcon />
       </Link>

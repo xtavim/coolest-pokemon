@@ -42,16 +42,16 @@ export const PokemonVote: React.FC<Props> = ({ data }) => {
               imageRendering: 'pixelated',
             }}
           />
-          <div className='border border-neutral-900 border-t-0 w-full flex flex-col justify-center items-center py-2'>
+          <div className='border border-neutral-900 border-t-0 w-full flex flex-col justify-center items-center py-2 w-[250px]'>
             <p className='leading-7 text-neutral-400'>
               #{getPokemonDex(pokemon.url)}
             </p>
-            <h3 className='scroll-m-20 text-2xl font-semibold tracking-tight capitalize'>
+            <h3 className='w-full px-2 scroll-m-20 text-2xl font-semibold tracking-tight capitalize overflow-hidden text-center text-ellipsis whitespace-nowrap'>
               {pokemon.name.split('-').join(' ')}
             </h3>
           </div>
           <Button
-            className='!bg-indigo-500 !text-white rounded-none w-full'
+            className='!bg-indigo-500 !text-white rounded-none w-full group'
             formAction={async () => {
               'use server';
               // determine loser
@@ -60,7 +60,7 @@ export const PokemonVote: React.FC<Props> = ({ data }) => {
               jar.set('refresh', 'ye');
             }}
           >
-            Vote
+            <span className='group-hover:scale-125 duration-100'>Vote</span>
           </Button>
         </form>
       ))}
