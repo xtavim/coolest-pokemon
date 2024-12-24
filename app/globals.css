@@ -17,3 +17,9 @@ body {
     --radius: 0.5rem;
   }
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  scrollbar-color: #444444 #222222;
+}
