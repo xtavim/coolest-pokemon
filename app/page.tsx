@@ -1,22 +1,17 @@
-import { Pokemon } from '@/components/Pokemon';
-import { SkeletonPokemon } from '@/components/skeleton/Pokemon';
+import { getAllPokemon } from '@/api';
+import { PokemonList } from '@/api/types';
+import { PokemonVote } from '@/components/PokemonVote';
+import { Loader } from 'lucide-react';
 import { Suspense } from 'react';
 
-const pokemonList = fetch('https://pokeapi.co/api/v2/pokemon/?limit=999999', {
-  cache: 'force-cache',
-  next: { revalidate: 2592000 },
-}).then(res => res.json());
-
 export default function Home() {
-  return (
-    <div className='flex justify-center px-20 grow'>
-      <div className='w-full flex items-center justify-evenly'>
-        <Suspense fallback={<SkeletonPokemon />}>
-          <Pokemon data={pokemonList} />
-        </Suspense>
+  const allPokemon: Promise<PokemonList> = getAllPokemon();
 
-        <Suspense fallback={<SkeletonPokemon />}>
-          <Pokemon data={pokemonList} />
+  return (
+    <div className='flex justify-center px-6 md:px-20 grow'>
+      <div className='w-full flex flex-col md:flex-row items-center justify-evenly md:justify-center md:gap-32'>
+        <Suspense fallback={<Loader className='animate-spin' />}>
+          <PokemonVote data={allPokemon} />
         </Suspense>
       </div>
     </div>
